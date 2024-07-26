@@ -1,0 +1,36 @@
+name: coffee_shop_flutter
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: Sora
+      fonts:
+        - asset: fonts/Sora-Regular.ttf
+          style: normal
+        - asset: fonts/Sora-Bold.ttf
+          weight: 700
+        - asset: fonts/Sora-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Sora-Light.ttf
+        - asset: fonts/Sora-Thin.ttf
