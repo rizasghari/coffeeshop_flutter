@@ -1,4 +1,5 @@
 import 'package:coffee_shop_flutter/mock_data.dart';
+import 'package:coffee_shop_flutter/screens/item_details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -342,106 +343,114 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _item(int index) {
-    return Card(
-      color: white,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                clipBehavior: Clip.hardEdge,
-                children: [
-                  const ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    child: Image(
-                      image: AssetImage("assets/images/item.png"),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ItemDetailsScreen(id: index)),
+        );
+      },
+      child: Card(
+        color: white,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  clipBehavior: Clip.hardEdge,
+                  children: [
+                    const ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      child: Image(
+                        image: AssetImage("assets/images/item.png"),
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 5),
-                      decoration: const BoxDecoration(
-                        color: grayTransparent,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(10.0),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        decoration: const BoxDecoration(
+                          color: grayTransparent,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15.0),
+                            topRight: Radius.circular(10.0),
+                          ),
+                        ),
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.star_rate_rounded,
+                              color: yellow,
+                              size: 14.0,
+                            ),
+                            SizedBox(width: 3.0),
+                            Text(
+                              "5.0",
+                              style: TextStyle(
+                                color: white,
+                                fontSize: 8.0,
+                                fontWeight: FontWeight.w900,
+                                height: 1.0,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: const Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.star_rate_rounded,
-                            color: yellow,
-                            size: 14.0,
-                          ),
-                          SizedBox(width: 3.0),
-                          Text(
-                            "5.0",
-                            style: TextStyle(
-                              color: white,
-                              fontSize: 8.0,
-                              fontWeight: FontWeight.w900,
-                              height: 1.0,
-                            ),
-                          ),
-                        ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10.0),
+                const Text(
+                  "Caffe Mocha",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                const Text(
+                  "Deep Foam",
+                  style: TextStyle(
+                    fontSize: 12.0,
+                    color: greyLighter,
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "\$ 2.99",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              const Text(
-                "Caffe Mocha",
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              const Text(
-                "Deep Foam",
-                style: TextStyle(
-                  fontSize: 12.0,
-                  color: greyLighter,
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "\$ 2.99",
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Container(
-                    width: 32.0,
-                    height: 32.0,
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      color: brownNormal,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: white,
-                      size: 16.0,
-                    ),
-                  )
-                ],
-              )
-            ],
+                    Container(
+                      width: 32.0,
+                      height: 32.0,
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        color: brownNormal,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: const Icon(
+                        Icons.add,
+                        color: white,
+                        size: 16.0,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
