@@ -1,5 +1,15 @@
 {
   "splashTitle": "Kahveye Mutlulukla\nAşık Olun!",
   "splashDescription": "Her fincanı sizin için ayrı bir keyif olan\nsıcacık kahve köşemize hoş geldiniz.",
-  "splashButton": "Başla"
+  "splashButton": "Başla",
+
+  "bottomNavItemHome": "Ana Sayfa",
+  "bottomNavItemFavourites": "Favoriler",
+  "bottomNavItemCart": "Sepet",
+  "bottomNavItemNotifications": "Bildirimler",
+
+  "homeTopLocationLabel": "Lokasyon",
+  "homeTopLocationHint": "Bilzen, Tanjungbalai",
+  "homeTopSearchHint": "Kahve ara...",
+  "homeTopBannerBadge": "Promosyon"
 }

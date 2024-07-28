@@ -4,5 +4,15 @@
     "description": "The title of the splash screen"
   },
   "splashDescription": "Welcome to our cozy coffee corner, where\n every cup is a delightful for you.",
-  "splashButton": "Get Started"
+  "splashButton": "Get Started",
+
+  "bottomNavItemHome": "Home",
+  "bottomNavItemFavourites": "Favourites",
+  "bottomNavItemCart": "Cart",
+  "bottomNavItemNotifications": "Notifications",
+
+  "homeTopLocationLabel": "Location",
+  "homeTopLocationHint": "Bilzen, Tanjungbalai",
+  "homeTopSearchHint": "Search coffee...",
+  "homeTopBannerBadge": "Promo"
 }
