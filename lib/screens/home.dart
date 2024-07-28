@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,19 +18,19 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Widget _buildIcon(IconData icon, IconData activeIcon, int index) {
+  Widget _buildBottomNavCustomIcon(
+      IconData icon, IconData activeIcon, int index) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Icon(
           _bottomNavSelectedIndex == index ? activeIcon : icon,
-          color:
-              _bottomNavSelectedIndex == index ? const Color(0xFFC67C4E) : null,
+          color: _bottomNavSelectedIndex == index ? brownNormal : null,
         ),
         if (_bottomNavSelectedIndex == index)
           Container(
             decoration: BoxDecoration(
-              color: const Color(0xFFC67C4E),
+              color: brownNormal,
               borderRadius: BorderRadius.circular(5),
             ),
             margin: const EdgeInsets.only(top: 5),
@@ -50,20 +52,21 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.home_outlined, Icons.home, 0),
+            icon: _buildBottomNavCustomIcon(Icons.home_outlined, Icons.home, 0),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.favorite_border, Icons.favorite, 1),
+            icon: _buildBottomNavCustomIcon(
+                Icons.favorite_border, Icons.favorite, 1),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(
+            icon: _buildBottomNavCustomIcon(
                 Icons.shopping_cart_outlined, Icons.shopping_cart, 2),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(
+            icon: _buildBottomNavCustomIcon(
                 Icons.notifications_outlined, Icons.notifications, 3),
             label: 'Notifications',
           ),
@@ -71,11 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _bottomNavSelectedIndex,
         selectedIconTheme: const IconThemeData(
           size: 34,
-          color: Color(0xFFC67C4E),
+          color: brownNormal,
         ),
         unselectedIconTheme: const IconThemeData(
           size: 34,
-          color: Color(0xFFA2A2A2),
+          color: greyLighter,
         ),
         showSelectedLabels: false,
         onTap: _onBottomNavItemTapped,

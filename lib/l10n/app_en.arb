@@ -1,0 +1,8 @@
+{
+  "splashTitle": "Fall in Love with\nCoffee in Blissful\nDelight!",
+  "@splashTitle": {
+    "description": "The title of the splash screen"
+  },
+  "splashDescription": "Welcome to our cozy coffee corner, where\n every cup is a delightful for you.",
+  "splashButton": "Get Started"
+}

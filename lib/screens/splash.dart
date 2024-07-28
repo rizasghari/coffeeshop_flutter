@@ -1,7 +1,5 @@
-import 'dart:ui';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:coffee_shop_flutter/screens/home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -41,16 +39,18 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 20,
+            left: 0,
+            right: 0,
+            bottom: 10,
             child: Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Fall in Love with\nCoffee in Blissful\nDelight!",
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.splashTitle,
+                    style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w800,
                       color: Colors.white,
@@ -62,13 +62,13 @@ class SplashScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "Welcome to our cozy coffee corner, where\n every cup is a delightful for you.",
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.splashDescription,
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Color(0xFFA2A2A2),
                     ),
-                    maxLines: 3,
+                    maxLines: 2,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
@@ -78,7 +78,8 @@ class SplashScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -96,9 +97,9 @@ class SplashScreen extends StatelessWidget {
                       backgroundColor:
                           WidgetStateProperty.all(const Color(0xFFC67C4E)),
                     ),
-                    child: const Text(
-                      "Get Started",
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.splashButton,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                         color: Colors.white,
