@@ -1,6 +1,7 @@
 import 'package:coffee_shop_flutter/mock_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../ui/colors.dart';
 import '../ui/gradients.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -278,11 +279,14 @@ class _HomeScreenState extends State<HomeScreen>
   Widget _contentSection() {
     return Padding(
       padding: const EdgeInsets.only(top: 80.0, left: 0.0, right: 0.0),
-      child: Column(
-        children: [
-          _tabs(),
-          _tabContent(),
-        ],
+      child: Container(
+        color: whiteLight,
+        child: Column(
+          children: [
+            _tabs(),
+            _tabContent(),
+          ],
+        ),
       ),
     );
   }
@@ -315,8 +319,92 @@ class _HomeScreenState extends State<HomeScreen>
           controller: _tabController,
           viewportFraction: 1.0,
           children: Category.getSampleCategories()
-              .map((tab) => Center(child: Text(tab.name)))
+              .map((tab) => Center(child: _itemsList(_tabController.index)))
               .toList(),
+        ),
+      ),
+    );
+  }
+
+  Widget _itemsList(int index) {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: (MediaQuery.of(context).size.width / 200).floor(),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 20,
+        childAspectRatio: 0.75,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        return _item(index);
+      },
+      itemCount: 20,
+    );
+  }
+
+  Widget _item(int index) {
+    return Card(
+      color: white,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
+            children: [
+              Stack(
+                clipBehavior: Clip.hardEdge,
+                children: [
+                  const ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    child: Image(
+                      image: AssetImage("assets/images/item.png"),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 5),
+                      decoration: const BoxDecoration(
+                        color: grayTransparent,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(10.0),
+                        ),
+                      ),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.star_rate_rounded,
+                            color: yellow,
+                            size: 12.0,
+                          ),
+                          SizedBox(width: 5.0),
+                          Text(
+                            "5.0",
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 8.0,
+                              fontWeight: FontWeight.w900,
+                              height: 1.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                "Item $index",
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
