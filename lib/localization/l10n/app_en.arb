@@ -14,5 +14,8 @@
   "homeTopSearchHint": "Search coffee...",
   "homeTopBannerBadge": "Promo",
   "homeTopBannerTextLine1": "Buy one get",
-  "homeTopBannerTextLine2": "one FREE"
+  "homeTopBannerTextLine2": "one FREE",
+  "itemDetailsTitle": "Details",
+  "itemDetailsPriceLabel": "Price",
+  "itemDetailsBuyNow": "Buy Now"
 }

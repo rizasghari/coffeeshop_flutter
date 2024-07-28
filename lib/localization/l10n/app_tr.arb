@@ -11,5 +11,8 @@
   "homeTopSearchHint": "Kahve ara...",
   "homeTopBannerBadge": "Promosyon",
   "homeTopBannerTextLine1": "Bir Alana",
-  "homeTopBannerTextLine2": "bir BEDAVA"
+  "homeTopBannerTextLine2": "bir BEDAVA",
+  "itemDetailsTitle": "Detaylar",
+  "itemDetailsPriceLabel": "Fiyat",
+  "itemDetailsBuyNow": "Şimdi Satın Al"
 }

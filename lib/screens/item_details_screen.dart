@@ -1,11 +1,6 @@
 import 'package:coffee_shop_flutter/ui/colors.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
-
-import '../ui/gradients.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
   final int id;
@@ -28,9 +23,9 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   AppBar _appBar() {
     return AppBar(
       backgroundColor: whiteLight,
-      title: const Text(
-        'Details',
-        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+      title: Text(
+        AppLocalizations.of(context)!.itemDetailsTitle,
+        style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: GestureDetector(
@@ -38,7 +33,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           Navigator.pop(context);
         },
         child: const Padding(
-          padding: EdgeInsets.only(left: 25.0),
+          padding: EdgeInsetsDirectional.only(start: 25.0),
           child: Icon(
             Icons.arrow_back_ios,
             size: 20.0,
@@ -47,7 +42,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 25.0),
+          padding: const EdgeInsetsDirectional.only(end: 25.0),
           child: IconButton(
             onPressed: () {},
             icon: const Icon(
@@ -111,16 +106,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Price",
-                style: TextStyle(color: greyLighter, fontSize: 14.0),
+                AppLocalizations.of(context)!.itemDetailsPriceLabel,
+                style: const TextStyle(color: greyLighter, fontSize: 14.0),
               ),
-              SizedBox(height: 5.0),
-              Text(
+              const SizedBox(height: 5.0),
+              const Text(
                 "\$ 25.00",
                 style: TextStyle(
                     fontSize: 18.0,
@@ -149,8 +144,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     WidgetStateProperty.all(const Color(0xFFC67C4E)),
               ),
               child: Text(
-                "Add to cart",
-                style: TextStyle(
+                AppLocalizations.of(context)!.itemDetailsBuyNow,
+                style: const TextStyle(
                     color: white, fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
             ),

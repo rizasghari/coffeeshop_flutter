@@ -1,8 +1,6 @@
 import 'package:coffee_shop_flutter/mock_data.dart';
 import 'package:coffee_shop_flutter/screens/item_details_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../ui/colors.dart';
 import '../ui/gradients.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

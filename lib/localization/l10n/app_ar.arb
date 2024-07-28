@@ -11,5 +11,8 @@
   "homeTopSearchHint": "ابحث عن قهوة...",
   "homeTopBannerBadge": "عروض",
   "homeTopBannerTextLine1": "اشتري واحدة واحصل",
-  "homeTopBannerTextLine2": "على واحدة مجانا"
+  "homeTopBannerTextLine2": "على واحدة مجانا",
+  "itemDetailsTitle": "تفاصيل",
+  "itemDetailsPriceLabel": "السعر",
+  "itemDetailsBuyNow": "اشتري الان"
 }
