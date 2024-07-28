@@ -332,7 +332,7 @@ class _HomeScreenState extends State<HomeScreen>
         crossAxisCount: (MediaQuery.of(context).size.width / 200).floor(),
         crossAxisSpacing: 10,
         mainAxisSpacing: 20,
-        childAspectRatio: 0.75,
+        childAspectRatio: 0.68,
       ),
       itemBuilder: (BuildContext context, int index) {
         return _item(index);
@@ -348,6 +348,8 @@ class _HomeScreenState extends State<HomeScreen>
         padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 clipBehavior: Clip.hardEdge,
@@ -377,9 +379,9 @@ class _HomeScreenState extends State<HomeScreen>
                           Icon(
                             Icons.star_rate_rounded,
                             color: yellow,
-                            size: 12.0,
+                            size: 14.0,
                           ),
-                          SizedBox(width: 5.0),
+                          SizedBox(width: 3.0),
                           Text(
                             "5.0",
                             style: TextStyle(
@@ -396,13 +398,49 @@ class _HomeScreenState extends State<HomeScreen>
                 ],
               ),
               const SizedBox(height: 10.0),
-              Text(
-                "Item $index",
-                style: const TextStyle(
-                  fontSize: 14.0,
+              const Text(
+                "Caffe Mocha",
+                style: TextStyle(
+                  fontSize: 16.0,
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              const SizedBox(height: 5.0),
+              const Text(
+                "Deep Foam",
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: greyLighter,
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "\$ 2.99",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Container(
+                    width: 32.0,
+                    height: 32.0,
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      color: brownNormal,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      color: white,
+                      size: 16.0,
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
