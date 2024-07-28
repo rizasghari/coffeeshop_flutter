@@ -52,23 +52,6 @@ class _AppWrapperScreenState extends State<AppWrapperScreen> {
     );
   }
 
-  Widget _heroSection() {
-    return Stack(
-      alignment: Alignment.center,
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: const BoxDecoration(
-              color: Color(0xFF4F9CD6),
-              borderRadius:
-                  BorderRadius.only(bottomLeft: Radius.circular(30.0))),
-          child: Text("Hero Section"),
-        ),
-      ],
-    );
-  }
-
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
@@ -126,9 +109,7 @@ class _AppWrapperScreenState extends State<AppWrapperScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: _screens.elementAt(_bottomNavSelectedIndex),
-        ),
+        child: _screens.elementAt(_bottomNavSelectedIndex),
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );

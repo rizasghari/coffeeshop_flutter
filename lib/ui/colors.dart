@@ -8,3 +8,4 @@ const darkGradientEnd = Color(0xFF313131);
 const white = Color(0xFFFFFFFF);
 const surfaceNormal = Color(0xFFD8D8D8);
 const badge = Color(0xFFed5151);
+const unselectedTabBg = Color(0xFFEDEDED);
