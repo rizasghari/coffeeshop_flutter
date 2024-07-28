@@ -1,4 +1,5 @@
 import 'package:coffee_shop_flutter/mock_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../ui/colors.dart';
 import '../ui/gradients.dart';
@@ -14,16 +15,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
-  late TabController tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
-    tabController = TabController(
+    _tabController = TabController(
         length: Category.getSampleCategories().length,
         initialIndex: 0,
         animationDuration: const Duration(milliseconds: 300),
         vsync: this);
-    tabController.addListener(() {
+    _tabController.addListener(() {
       setState(() {});
     });
     super.initState();
@@ -279,55 +280,44 @@ class _HomeScreenState extends State<HomeScreen>
       padding: const EdgeInsets.only(top: 80.0, left: 0.0, right: 0.0),
       child: Column(
         children: [
-          TabBar(
-            controller: tabController,
-            isScrollable: true,
-            labelStyle: const TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w700,
-            ),
-            labelColor: white,
-            indicator: const UnderlineTabIndicator(
-              borderSide: BorderSide(
-                width: 0.0,
-                color: Colors.transparent,
-              ),
-            ),
-            dividerColor: Colors.transparent,
-            padding: EdgeInsets.zero,
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-            tabs: List.generate(
-              Category.getSampleCategories().length,
-              (index) => _customTab(index, tabController.index),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: TabBarView(
-                controller: tabController,
-                children: [
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                  Text(
-                      Category.getSampleCategories()[tabController.index].name),
-                ],
-              ),
-            ),
-          ),
+          _tabs(),
+          _tabContent(),
         ],
+      ),
+    );
+  }
+
+  Widget _tabs() {
+    return TabBar(
+      controller: _tabController,
+      isScrollable: true,
+      indicator: const UnderlineTabIndicator(
+        borderSide: BorderSide(
+          width: 0.0,
+          color: Colors.transparent,
+        ),
+      ),
+      dividerColor: Colors.transparent,
+      labelPadding: const EdgeInsets.only(left: 0, right: 10),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
+      tabs: List.generate(
+        Category.getSampleCategories().length,
+        (index) => _customTab(index, _tabController.index),
+      ),
+    );
+  }
+
+  Widget _tabContent() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: TabBarView(
+          controller: _tabController,
+          viewportFraction: 1.0,
+          children: Category.getSampleCategories()
+              .map((tab) => Center(child: Text(tab.name)))
+              .toList(),
+        ),
       ),
     );
   }
@@ -338,19 +328,24 @@ class _HomeScreenState extends State<HomeScreen>
       child: Container(
         decoration: BoxDecoration(
           color: isSelected ? brownNormal : unselectedTabBg,
-          // Selected has red, unselected has grey
           borderRadius: BorderRadius.circular(6),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         child: Text(
           Category.getSampleCategories()[index].name,
           style: TextStyle(
-              color: isSelected ? white : darkGradientEnd,
+            color: isSelected ? white : darkGradientEnd,
             fontSize: isSelected ? 16 : 14,
-            fontWeight: isSelected ? FontWeight.w900 : FontWeight.normal,
+            fontWeight: isSelected ? FontWeight.w800 : FontWeight.normal,
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 }
