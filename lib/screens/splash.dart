@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:coffee_shop_flutter/screens/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -72,8 +75,24 @@ class SplashScreen extends StatelessWidget {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      );
+                    },
                     style: ButtonStyle(
+                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                      ),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
                       backgroundColor:
                           WidgetStateProperty.all(const Color(0xFFC67C4E)),
                     ),
@@ -81,6 +100,7 @@ class SplashScreen extends StatelessWidget {
                       "Get Started",
                       style: TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.w800,
                         color: Colors.white,
                       ),
                     ),
