@@ -1,5 +1,6 @@
 import 'package:coffee_shop_flutter/ui/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
@@ -32,11 +33,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
         style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
-      leading: const Padding(
-        padding: EdgeInsets.only(left: 25.0),
-        child: Icon(
-          Icons.arrow_back_ios,
-          size: 20.0,
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Padding(
+          padding: EdgeInsets.only(left: 25.0),
+          child: Icon(
+            Icons.arrow_back_ios,
+            size: 20.0,
+          ),
         ),
       ),
       actions: [
