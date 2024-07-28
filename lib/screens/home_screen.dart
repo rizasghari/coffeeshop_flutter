@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../ui/colors.dart';
 import '../ui/gradients.dart';
@@ -54,40 +53,125 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          width: double.infinity,
-          height: 140,
-          clipBehavior: Clip.antiAlias,
-          decoration: const BoxDecoration(
-            color: brownNormal,
-            borderRadius: BorderRadius.all(Radius.circular(16.0)),
-          ),
-          child: const Image(
-            image: AssetImage("assets/images/home_top_banner.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        _bannerBackground(),
         Positioned(
           top: 15,
           left: 30,
-          child: Container(
-            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
-            clipBehavior: Clip.antiAlias,
-            decoration: const BoxDecoration(
-              color: badge,
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            ),
-            child: Text(
-              AppLocalizations.of(context)!.homeTopBannerBadge,
-              style: const TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w700,
-                color: white,
-              ),
-            ),
-          ),
+          child: _bannerPromo(),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 30,
+          child: _bannerText(),
         ),
       ],
+    );
+  }
+
+  Widget _bannerText() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              height: 30.0,
+              clipBehavior: Clip.none,
+              decoration: const BoxDecoration(
+                gradient: darkGradient,
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.homeTopBannerTextLine1,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+              top: -15,
+              left: 3.0,
+              child: Text(
+                AppLocalizations.of(context)!.homeTopBannerTextLine1,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w700,
+                  color: white,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10.0),
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              height: 30.0,
+              clipBehavior: Clip.none,
+              decoration: const BoxDecoration(
+                gradient: darkGradient,
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.homeTopBannerTextLine2,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+              top: -15,
+              left: 3.0,
+              child: Text(
+                AppLocalizations.of(context)!.homeTopBannerTextLine2,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w700,
+                  color: white,
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _bannerBackground() {
+    return Container(
+      width: double.infinity,
+      height: 140,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(
+        color: brownNormal,
+        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+      ),
+      child: const Image(
+        image: AssetImage("assets/images/home_top_banner.png"),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget _bannerPromo() {
+    return Container(
+      padding:
+          const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(
+        color: badge,
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+      child: Text(
+        AppLocalizations.of(context)!.homeTopBannerBadge,
+        style: const TextStyle(
+          fontSize: 14.0,
+          fontWeight: FontWeight.w700,
+          color: white,
+        ),
+      ),
     );
   }
 

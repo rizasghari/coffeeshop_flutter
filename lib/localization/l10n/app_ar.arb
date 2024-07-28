@@ -2,14 +2,14 @@
   "splashTitle": "من دواعي سروري\nأن تقع في حب القهوة!",
   "splashDescription": "مرحبًا بك في ركن القهوة المريح لدينا،\nحيث يمثل كل كوب متعة مختلفة بالنسبة لك.",
   "splashButton": "يبدأ",
-
   "bottomNavItemHome": "الرئيسية",
   "bottomNavItemFavourites": "المفضلة",
   "bottomNavItemCart": "السلة",
   "bottomNavItemNotifications": "الاشعارات",
-
   "homeTopLocationLabel": "الموقع",
   "homeTopLocationHint": "الامارات مترين، تنجينا",
   "homeTopSearchHint": "ابحث عن قهوة...",
-  "homeTopBannerBadge": "عروض"
+  "homeTopBannerBadge": "عروض",
+  "homeTopBannerTextLine1": "اشتري واحدة واحصل",
+  "homeTopBannerTextLine2": "على واحدة مجانا"
 }

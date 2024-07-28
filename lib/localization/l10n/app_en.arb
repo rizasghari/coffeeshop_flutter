@@ -5,14 +5,14 @@
   },
   "splashDescription": "Welcome to our cozy coffee corner, where\n every cup is a delightful for you.",
   "splashButton": "Get Started",
-
   "bottomNavItemHome": "Home",
   "bottomNavItemFavourites": "Favourites",
   "bottomNavItemCart": "Cart",
   "bottomNavItemNotifications": "Notifications",
-
   "homeTopLocationLabel": "Location",
   "homeTopLocationHint": "Bilzen, Tanjungbalai",
   "homeTopSearchHint": "Search coffee...",
-  "homeTopBannerBadge": "Promo"
+  "homeTopBannerBadge": "Promo",
+  "homeTopBannerTextLine1": "Buy one get",
+  "homeTopBannerTextLine2": "one FREE"
 }
