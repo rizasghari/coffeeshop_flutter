@@ -14,5 +14,7 @@
   "homeTopBannerTextLine2": "bir BEDAVA",
   "itemDetailsTitle": "Detaylar",
   "itemDetailsPriceLabel": "Fiyat",
-  "itemDetailsBuyNow": "Şimdi Satın Al"
+  "itemDetailsBuyNow": "Şimdi Satın Al",
+  "itemDetailsItemTitle": "Caffe Mocha",
+  "itemDetailsItemType": "Sıcak"
 }

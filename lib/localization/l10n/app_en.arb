@@ -17,5 +17,7 @@
   "homeTopBannerTextLine2": "one FREE",
   "itemDetailsTitle": "Details",
   "itemDetailsPriceLabel": "Price",
-  "itemDetailsBuyNow": "Buy Now"
+  "itemDetailsBuyNow": "Buy Now",
+  "itemDetailsItemTitle": "Caffe Mocha",
+  "itemDetailsItemType": "Ice/Hot"
 }

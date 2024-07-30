@@ -14,5 +14,7 @@
   "homeTopBannerTextLine2": "على واحدة مجانا",
   "itemDetailsTitle": "تفاصيل",
   "itemDetailsPriceLabel": "السعر",
-  "itemDetailsBuyNow": "اشتري الان"
+  "itemDetailsBuyNow": "اشتري الان",
+  "itemDetailsItemTitle": "قهوة كافيه",
+  "itemDetailsItemType": "مجانية"
 }

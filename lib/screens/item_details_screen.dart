@@ -1,6 +1,9 @@
 import 'package:coffee_shop_flutter/ui/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../mock_data.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
   final int id;
@@ -168,7 +171,83 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 
   Widget _itemDetails() {
-    return Text("Item Details");
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.itemDetailsItemTitle,
+          style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.itemDetailsItemType,
+              style: const TextStyle(color: greyLighter, fontSize: 12.0),
+            ),
+            SizedBox(
+              height: 44,
+              width: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: ItemFeature.getSampleItemFeatures().length,
+                itemBuilder: (context, index) {
+                  return _itemDetailsFeature(index);
+                },
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(Icons.star, color: yellow, size: 20.0),
+            SizedBox(width: 5.0),
+            Text(
+              "4.8",
+              style: const TextStyle(
+                  color: greyNormal,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(width: 5.0),
+            Text(
+              "(122)",
+              style: TextStyle(color: greyLighter, fontSize: 12.0),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10.0),
+        const Divider(
+          thickness: 1,
+          color: surfaceLightActive,
+          indent: 15,
+          endIndent: 15,
+        ),
+      ],
+    );
+  }
+
+  Widget _itemDetailsFeature(int index) {
+    return Container(
+      width: 30.0,
+      height: 30.0,
+      padding: const EdgeInsets.all(5.0),
+      decoration: const BoxDecoration(
+        color: unselectedTabBg,
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
+      child: Image(
+        width: 20.0,
+        height: 20.0,
+        image: AssetImage(ItemFeature.getSampleItemFeatures()[index].image),
+      ),
+    );
   }
 
   Widget _itemDescription() {

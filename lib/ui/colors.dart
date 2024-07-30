@@ -7,6 +7,7 @@ const darkGradientStart = Color(0xFF111111);
 const darkGradientEnd = Color(0xFF313131);
 const white = Color(0xFFFFFFFF);
 const surfaceNormal = Color(0xFFD8D8D8);
+const surfaceLightActive = Color(0xFFE3E3E3);
 const badge = Color(0xFFed5151);
 const unselectedTabBg = Color(0xFFEDEDED);
 const whiteLight = Color(0xFFF9F9F9);
