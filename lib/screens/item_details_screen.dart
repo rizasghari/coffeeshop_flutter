@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../mock_data.dart';
+import '../ui/widgets/read_more_less_text.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
   final int id;
@@ -60,12 +61,13 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
 
   Widget _content() {
     return Container(
+      height: MediaQuery.of(context).size.height,
       color: whiteLight,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0, bottom: 100.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -265,10 +267,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10.0),
-        Text(
-          AppLocalizations.of(context)!.itemDetailsDescription,
-          style: const TextStyle(color: greyLighter, fontSize: 12.0),
-        ),
+        ReadMoreLessText(text: AppLocalizations.of(context)!.itemDetailsDescription)
       ],
     );
   }
