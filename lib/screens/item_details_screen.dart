@@ -66,19 +66,21 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _itemImage(),
-                const SizedBox(height: 20.0),
-                _itemDetails(),
-                const SizedBox(height: 20.0),
-                _itemDescription(),
-                const SizedBox(height: 20.0),
-                _sizeSelector(),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _itemImage(),
+                  const SizedBox(height: 20.0),
+                  _itemDetails(),
+                  const SizedBox(height: 20.0),
+                  _itemDescription(),
+                  const SizedBox(height: 20.0),
+                  _sizeSelector(),
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -189,12 +191,15 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             ),
             SizedBox(
               height: 44,
-              width: 200,
-              child: ListView.builder(
+              width: 160,
+              child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: ItemFeature.getSampleItemFeatures().length,
                 itemBuilder: (context, index) {
                   return _itemDetailsFeature(index);
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(width: 12.0);
                 },
               ),
             ),
@@ -208,7 +213,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             SizedBox(width: 5.0),
             Text(
               "4.8",
-              style: const TextStyle(
+              style: TextStyle(
                   color: greyNormal,
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold),
@@ -233,9 +238,9 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
 
   Widget _itemDetailsFeature(int index) {
     return Container(
-      width: 30.0,
-      height: 30.0,
-      padding: const EdgeInsets.all(5.0),
+      width: 44.0,
+      height: 44.0,
+      padding: const EdgeInsets.all(10.0),
       decoration: const BoxDecoration(
         color: unselectedTabBg,
         borderRadius: BorderRadius.all(
@@ -251,7 +256,21 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 
   Widget _itemDescription() {
-    return Text("Item Description");
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.itemDetailsItemDescriptionTitle,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10.0),
+        Text(
+          AppLocalizations.of(context)!.itemDetailsDescription,
+          style: const TextStyle(color: greyLighter, fontSize: 12.0),
+        ),
+      ],
+    );
   }
 
   Widget _sizeSelector() {
