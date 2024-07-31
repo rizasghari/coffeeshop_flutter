@@ -1,8 +1,7 @@
 import 'package:coffee_shop_flutter/ui/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:logger/logger.dart';
 import '../mock_data.dart';
 import '../ui/widgets/read_more_less_text.dart';
 
@@ -16,6 +15,8 @@ class ItemDetailsScreen extends StatefulWidget {
 }
 
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
+  final Logger _logger = Logger();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
         clipBehavior: Clip.none,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0, bottom: 100.0),
+            padding: const EdgeInsets.only(
+                top: 25.0, left: 25.0, right: 25.0, bottom: 100.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -163,13 +165,18 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 
   Widget _itemImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20.0),
-      child: const Image(
-        image: AssetImage("assets/images/item.png"),
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: 200.0,
+    final String tag = "item_photo_${widget.id}";
+    _logger.i("######## tag: $tag");
+    return Hero(
+      tag: tag,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: const Image(
+          image: AssetImage("assets/images/item.png"),
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 200.0,
+        ),
       ),
     );
   }
@@ -267,7 +274,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10.0),
-        ReadMoreLessText(text: AppLocalizations.of(context)!.itemDetailsDescription)
+        ReadMoreLessText(
+            text: AppLocalizations.of(context)!.itemDetailsDescription)
       ],
     );
   }

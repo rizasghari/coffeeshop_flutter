@@ -1,6 +1,7 @@
 import 'package:coffee_shop_flutter/mock_data.dart';
 import 'package:coffee_shop_flutter/screens/item_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import '../ui/colors.dart';
 import '../ui/gradients.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
   late TabController _tabController;
+  final Logger _logger = Logger();
 
   @override
   void initState() {
@@ -341,6 +343,8 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _item(int index) {
+    final String tag = "item_photo_$index";
+    _logger.i("######## tag: $tag");
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -360,10 +364,13 @@ class _HomeScreenState extends State<HomeScreen>
                 Stack(
                   clipBehavior: Clip.hardEdge,
                   children: [
-                    const ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      child: Image(
-                        image: AssetImage("assets/images/item.png"),
+                    Hero(
+                      tag: tag,
+                      child: const ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        child: Image(
+                          image: AssetImage("assets/images/item.png"),
+                        ),
                       ),
                     ),
                     Positioned(
