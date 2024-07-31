@@ -343,8 +343,9 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _item(int index) {
-    final String tag = "item_photo_$index";
-    _logger.i("######## tag: $tag");
+    final String heroPhotoTag = "item_photo_$index";
+    final String heroTitleTag = "item_title_$index";
+    _logger.i("######## tag: $heroPhotoTag - $heroTitleTag");
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -365,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen>
                   clipBehavior: Clip.hardEdge,
                   children: [
                     Hero(
-                      tag: tag,
+                      tag: heroPhotoTag,
                       child: const ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         child: Image(
@@ -411,11 +412,18 @@ class _HomeScreenState extends State<HomeScreen>
                   ],
                 ),
                 const SizedBox(height: 10.0),
-                const Text(
-                  "Caffe Mocha",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w700,
+                Hero(
+                  tag: heroTitleTag,
+                  child: const Material(
+                    color: Colors.transparent,
+                    child: Text(
+                      "Caffe Mocha",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                        color: greyNormal,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5.0),

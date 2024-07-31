@@ -166,7 +166,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
 
   Widget _itemImage() {
     final String tag = "item_photo_${widget.id}";
-    _logger.i("######## tag: $tag");
+    _logger.i("######## photo tag: $tag");
     return Hero(
       tag: tag,
       child: ClipRRect(
@@ -182,13 +182,24 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 
   Widget _itemDetails() {
+    final String tag = "item_title_${widget.id}";
+    _logger.i("######## title tag: $tag");
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          AppLocalizations.of(context)!.itemDetailsItemTitle,
-          style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        Hero(
+          tag: "item_title_${widget.id}",
+          child: Material(
+            color: Colors.transparent,
+            child: Text(
+              AppLocalizations.of(context)!.itemDetailsItemTitle,
+              style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: greyNormal),
+            ),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
