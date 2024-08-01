@@ -2,6 +2,7 @@ import 'package:coffee_shop_flutter/ui/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
+import '../enums.dart';
 import '../mock_data.dart';
 import '../ui/widgets/read_more_less_text.dart';
 
@@ -16,6 +17,7 @@ class ItemDetailsScreen extends StatefulWidget {
 
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   final Logger _logger = Logger();
+  Set<CoffeeSize> _coffeeSizeSelection = <CoffeeSize>{CoffeeSize.medium};
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(
-                top: 25.0, left: 25.0, right: 25.0, bottom: 100.0),
+                top: 25.0, left: 25.0, right: 25.0, bottom: 150.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -292,6 +294,24 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 
   Widget _sizeSelector() {
-    return Text("Size Selector");
+    return SegmentedButton<CoffeeSize>(
+      multiSelectionEnabled: false,
+      emptySelectionAllowed: false,
+      showSelectedIcon: true,
+      selected: _coffeeSizeSelection,
+      onSelectionChanged: (Set<CoffeeSize> newSelection) {
+        setState(() {
+          _coffeeSizeSelection = newSelection;
+        });
+      },
+      segments: coffeeSizes.map<ButtonSegment<CoffeeSize>>(
+        ((CoffeeSize, String) size) {
+          return ButtonSegment<CoffeeSize>(
+            value: size.$1,
+            label: Text(size.$2),
+          );
+        },
+      ).toList(),
+    );
   }
 }

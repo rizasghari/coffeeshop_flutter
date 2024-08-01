@@ -1,3 +1,5 @@
+import 'package:coffee_shop_flutter/enums.dart';
+
 class Category {
   final String name;
 
@@ -34,3 +36,9 @@ class ItemFeature {
     ];
   }
 }
+
+const List<(CoffeeSize, String)> coffeeSizes = [
+  (CoffeeSize.small, "S"),
+  (CoffeeSize.medium, "M"),
+  (CoffeeSize.large, "L"),
+];
